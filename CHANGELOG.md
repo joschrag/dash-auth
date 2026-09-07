@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.3.4] - 2026-09-07
+
+### Security
+- Bumped `cryptography`, `h2`, `mcp`, `mistune`, `setuptools`, and `tornado` (all transitive) to versions patching Dependabot-flagged advisories. Added matching `constraint-dependencies` floors in `pyproject.toml` so a future lockfile regen can't drift back below the patched versions.
+
 ## [1.3.3] - 2026-06-24
 
 ### Security
