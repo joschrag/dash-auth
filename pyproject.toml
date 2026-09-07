@@ -77,10 +77,25 @@ dev = [
 
 [tool.uv]
 constraint-dependencies = [
-    "setuptools<80",
-    # GHSA: cryptography wheels < 48.0.1 bundle a vulnerable OpenSSL
-    # (advisory 2026-06-09). Pulled in transitively via authlib.
-    "cryptography>=48.0.1",
+    # GHSA-g6cj-pr64-35w5: PKCS#7 EnvelopedData decryption Bleichenbacher
+    # oracle below 50.0.0. Pulled in transitively via authlib.
+    "cryptography>=50.0.0",
+    # GHSA-h35f-9h28-mq5c: MANIFEST.in exclusion bypass via NFC/NFD
+    # collision below 83.0.0. Pulled in transitively via dash/build backend.
+    "setuptools>=83.0.0",
+    # GHSA-ffq3-xpv3-j92q and others: quadratic-time parsing / XSS / path
+    # traversal below 3.3.0. Pulled in transitively via nbconvert.
+    "mistune>=3.3.0",
+    # GHSA-vj7q-gjh5-988w: WebSocket transport missing Host/Origin
+    # validation below 1.28.1. Pulled in transitively via dash.
+    "mcp>=1.28.1",
+    # GHSA-6hr6-w5qg-qmwg: duplicate Host header request-smuggling risk
+    # at and below 4.4.0. Pulled in transitively via hypercorn.
+    "h2>=4.4.1",
+    # GHSA-mpf4-983q-p7j4 and others: unbounded urlencoded/multipart
+    # parsing DoS at and below 6.5.7. Pulled in transitively via
+    # jupyter-client.
+    "tornado>=6.5.8",
 ]
 override-dependencies = [
     "urllib3>=2.7.0",
